@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Create a root instance for rendering React components
+    let reactRoot = ReactDOM.createRoot(document.getElementById('root'))
+
+    // Define the Gallery component
+    function Gallery({children }){
+        return <div style={{display: 'grid', 
+                            gridTemplateColumns: 'repeat(3,1fr)', 
+                            gap: '40px' ,
+                            padding: '50px'}}>
+                    {children}
+               </div>
+    }
+
+    // Define the Image component
+    function Image({ src, alt }) {
+        return <img src={src} alt={alt} style={{ width: '100%', height: '350px' }} />;
+    }
+
+    // Define the App component
+    function App () {
+        return (
+                <div>
+                    <h1 style={{textAlign: "center"}}>Dynamic Image Gallery</h1>
+                    <Gallery>
+                        <Image src="image/img1.jpeg" alt="Image 1" />
+                        <Image src="image/img2.jpeg" alt="Image 2" />
+                        <Image src="image/img3.jpeg" alt="Image 3" />
+                        <Image src="image/img4.jpeg" alt="Image 4" />
+                        <Image src="image/img5.jpeg" alt="Image 5" />
+                        <Image src="image/img6.jpeg" alt="Image 6" />
+                        <Image src="image/img7.jpeg" alt="Image 7" />
+                        <Image src="image/img8.jpeg" alt="Image 8" />
+                        <Image src="image/img9.jpeg" alt="Image 9" />
+                    </Gallery>
+                </div>
+        );
+    }
+
+    // Render the App component into the root element
+    reactRoot.render(<App />)
+  </script>
+</body>
+</html>
+
+
+<!-- Grid Layout: Images are organized in a responsive grid layout with three columns 
+    for a visually appealing presentation.
+
+    Gap and Padding: Space between images (gap: 40px) and padding around the gallery 
+    (padding: 50px) enhance visual clarity and aesthetics.
+
+    Image Sizing: Fixed height (height: 350px) ensures uniformity, while width adjusts 
+    automatically to maintain aspect ratios (width: 100%).
+
+    Accessibility: alt attributes provide alternative text for screen readers, 
+    enhancing accessibility.These design choices aim to create an attractive and 
+    accessible image gallery that effectively showcases images while ensuring 
+    responsiveness and usability. -->
